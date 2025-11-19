@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart To-Do App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #9face6, #74ebd5);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 40px;
+    }
+    .container {
+      width: 480px;
+      background: rgba(255,255,255,0.85);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.14);
+      backdrop-filter: blur(12px);
+    }
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .input-area {
+      display: flex;
+      gap: 10px;
+    }
+    input {
+      flex: 1;
+      padding: 14px;
+      border-radius: 12px;
+      border: 2px solid #ccc;
+      font-size: 16px;
+      outline: none;
+      transition: .3s;
+    }
+    input:focus {
+      border-color: #6c63ff;
+      box-shadow: 0 0 8px #c7c3ff;
+    }
+    .add-btn {
+      padding: 14px 22px;
+      background: #6c63ff;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: .3s;
+    }
+    .add-btn:hover { transform: scale(1.06); }
+    .task {
+      background: white;
+      padding: 15px;
+      border-radius: 14px;
+      margin-top: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .task.done { text-decoration: line-through; color: #3a7f3a; background: #e8ffe8; }
+    .btns button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 10px;
+      margin-left: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: .25s;
+    }
+    .edit-btn { background: #ffd046; }
+    .edit-btn:hover { transform: scale(1.1); }
+    .done-btn { background: #4cd964; color: white; }
+    .delete-btn { background: #ff4e4e; color: white; }
+    .delete-btn:hover, .done-btn:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body ng-controller="todoCtrl">
+
+  <div class="container">
+    <h1>TO-DO PLANNER</h1>
+
+    <div class="input-area">
+      <input type="text" ng-model="taskText" placeholder="Add or edit task...">
+      <button class="add-btn" ng-click="saveTask()">{{editIndex !== null ? 'Update' : '+'}}</button>
+    </div>
+
+    <div class="task" ng-repeat="t in tasks" ng-class="{'done': t.completed}">
+      <span>{{t.name}}</span>
+      <div class="btns">
+        <button class="edit-btn" ng-click="editTask($index)">✏️</button>
+        <button class="done-btn" ng-click="markDone(t)">✔</button>
+        <button class="delete-btn" ng-click="deleteTask($index)">✖</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  var app = angular.module('todoApp', []);
+
+  app.controller('todoCtrl', function($scope) {
+
+    // LOAD FROM LOCAL STORAGE
+    $scope.tasks = JSON.parse(localStorage.getItem('todoList')) || [];
+
+    $scope.taskText = "";
+    $scope.editIndex = null;
+
+    // SAVE LIST TO LOCAL STORAGE
+    function saveToLocal() {
+      localStorage.setItem('todoList', JSON.stringify($scope.tasks));
+    }
+
+    // ADD OR UPDATE TASK
+    $scope.saveTask = function() {
+      if (!$scope.taskText.trim()) return;
+
+      if ($scope.editIndex !== null) {
+        $scope.tasks[$scope.editIndex].name = $scope.taskText;
+        $scope.editIndex = null;
+      } else {
+        $scope.tasks.push({ name: $scope.taskText, completed: false });
+      }
+
+      $scope.taskText = "";
+      saveToLocal();
+    };
+
+    // EDIT TASK
+    $scope.editTask = function(index) {
+      $scope.taskText = $scope.tasks[index].name;
+      $scope.editIndex = index;
+    };
+
+    // MARK DONE
+    $scope.markDone = function(task) {
+      task.completed = !task.completed;
+      saveToLocal();
+    };
+
+    // DELETE TASK
+    $scope.deleteTask = function(index) {
+      $(".task").eq(index).slideUp(200, function() {
+        $scope.$apply(function() {
+          $scope.tasks.splice(index, 1);
+          saveToLocal();
+        });
+      });
+    };
+  });
+</script>
+</body>
+</html>

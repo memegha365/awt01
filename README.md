@@ -1,1 +1,52 @@
-# awt01
+{
+  "Class": [
+    {
+      "name": "Class",
+      "subfolders": [
+        {
+          "name": "Angular",
+          "files": [
+            { "name": "angular expression", "path": "class/Angular/angular_expression.html" },
+            { "name": "ng-bind example", "path": "class/Angular/ng-bind.html" },
+            { "name": "ng-class example", "path": "class/Angular/class.html" },
+            { "name": "ng-click exmaple", "path": "class/Angular/click.html" },
+            { "name": "custom directive", "path": "class/Angular/custom_directive.html" },
+            { "name": "to-do list", "path": "class/Angular/todo.html" }
+          ]
+        }, 
+        {
+          "name": "Jquery",
+          "files": [
+            { "name": "Task 1", "path": "class/Jquery/Task 1/task1.html" },
+            { "name": "Local Example", "path": "class/Jquery/Task 2/local.html" },
+            { "name": "Remote Example", "path": "class/Jquery/Task 2/remote.html" },
+            { "name": "Task 3", "path": "class/Jquery/Task 3/todo.html" }
+
+          ]
+        },
+        {
+          "name": "Nodejs",
+          "files": [
+            { "name": "Server.js", "path": "https://awt-01-9lrh.onrender.com/" }
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lab Experiments",
+      "files": [
+        { "name": "Experiment 1", "path": "lab/Experiment_1/index.html" },
+        { "name": "Experiment 2", "path": "lab/Experiment_2/index.html" },
+        { "name": "Experiment 3", "path": "lab/Experiment_3/index.html" },
+        { "name": "Experiment 4 - Bill", "path": "lab/Experiment_4/bill.html" },
+        { "name": "Experiment 4 - Form", "path": "lab/Experiment_4/form.html" },
+        { "name": "Experiment 5&6", "path":"https://awt-01-2.onrender.com" },
+        { "name": "Experiment 7-cookie", "path":"lab/Experiment_7/source/cookie-example.js" },
+        { "name": "Experiment 7-session", "path":"lab/Experiment_7/source/session-example.js" },
+        { "name": "Session-cookie-demo", "path":" https://awt-01-6.onrender.com" }
+
+      ]
+    }
+  ]
+}
