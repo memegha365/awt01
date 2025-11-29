@@ -1,0 +1,153 @@
+/* ---------- GLOBAL ---------- */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(135deg, #dbe9ff, #ffffff);
+  margin: 0;
+  padding: 40px;
+  color: #222;
+}
+
+h1, h2 {
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #003d82;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0051a8;
+}
+
+/* ---------- FORM AREA ---------- */
+form input {
+  width: 320px;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  transition: 0.3s ease;
+}
+
+form input:focus {
+  box-shadow: 0 0 10px rgba(0,81,168,0.4);
+  transform: scale(1.02);
+}
+
+button {
+  padding: 10px 20px;
+  background: #0051a8;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #003d82;
+  transform: translateY(-2px);
+}
+
+/* ---------- TABLE ---------- */
+table {
+  width: 100%;
+  margin-top: 25px;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  animation: fadeIn 0.7s ease;
+}
+
+th {
+  background: #0051a8;
+  color: #fff;
+  padding: 16px;
+  font-size: 17px;
+  text-align: left;
+}
+
+td {
+  padding: 16px;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* row hover effect */
+tr:hover {
+  background: rgba(0,81,168,0.08);
+  transition: 0.3s ease;
+}
+
+/* ---------- BUTTONS IN TABLE ---------- */
+.action-btn {
+  padding: 7px 14px;
+  margin-right: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+/* delete */
+.delete-btn {
+  background: #ff4f4f;
+  color: white;
+}
+.delete-btn:hover {
+  background: #d93636;
+  transform: scale(1.05);
+}
+
+/* update */
+.update-btn {
+  background: #0275d8;
+  color: white;
+}
+.update-btn:hover {
+  background: #025aa5;
+  transform: scale(1.05);
+}
+
+/* sale */
+.sale-btn {
+  background: #5cb85c;
+  color: white;
+}
+.sale-btn:hover {
+  background: #449d44;
+  transform: scale(1.05);
+}
+
+/* ---------- EMPTY STATE ---------- */
+.empty {
+  text-align: center;
+  padding: 24px;
+  color: #777;
+  font-style: italic;
+  font-size: 18px;
+  animation: fadeIn 0.6s ease;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
